@@ -38,6 +38,6 @@ return [
     (new Flarum\Event())
         ->listen(Serializing::class, [SaveUserAnthem::class, 'addUserAnthem']),
 
-    (new Flarum\Database())
-        ->add(__DIR__.'/migrations'),
+    (new Flarum\Model(User::class))
+        ->cast('anthem_url', 'string'),
 ];
