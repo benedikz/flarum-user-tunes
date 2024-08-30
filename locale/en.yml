@@ -1,6 +1,10 @@
 flarum-user-tunes:
     admin:
-        permission:
-            editOwn: Edit own anthem
-            editAny: Edit any anthem
+      permission:
+        editOwn: "Edit Own Anthem"
+        editAny: "Edit Any Anthem"
     forum:
+      anthem_settings_label: "Your Profile Anthem URL"
+      anthem_placeholder: "Enter your anthem URL"
+      save_button: "Save"
+      save_success: "Your anthem has been saved successfully!"

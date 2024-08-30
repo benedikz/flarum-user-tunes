@@ -14,6 +14,8 @@ namespace Benedikz\UserTunes;
 use Flarum\Extend as Flarum;
 use Flarum\User\User;
 use Benedikz\UserTunes\Access\UserPolicy;
+use Benedikz\UserTunes\Api\Serializer\UserSerializer;
+use Benedikz\UserTunes\Listener\SaveUserAnthem;
 
 return [
     
@@ -29,4 +31,13 @@ return [
     
     (new Flarum\Policy())
         ->modelPolicy(User::class, Access\UserPolicy::class),
+    
+    (new Flarum\ApiSerializer(UserSerializer::class))
+        ->attributes(UserSerializer::class),
+
+    (new Flarum\Listener())
+        ->listen(Serializing::class, [SaveUserAnthem::class, 'addUserAnthem']),
+
+    (new Flarum\Migrator())
+        ->add(__DIR__.'/migrations'),
 ];
