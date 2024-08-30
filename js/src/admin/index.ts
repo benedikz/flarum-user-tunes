@@ -1,13 +1,22 @@
 import app from 'flarum/admin/app';
-import { extend } from 'flarum/common/extend';
-import PermissionGrid from 'flarum/admin/components/PermissionGrid';
 
-app.initializers.add('flarum-user-tunes', () => {
-  extend(PermissionGrid.prototype, 'startItems', (items) => {
-    items.add('setProfileAnthem', {
-      icon: 'fas fa-music',
-      label: app.translator.trans('flarum-user-tunes.admin.permissions.set_profile_anthem'),
-      permission: 'setProfileAnthem'
-    });
-  });
+app.initializers.add('benedikz/flarum-user-tunes', () => {
+  app.extensionData
+    .for('flarum-user-tunes')
+    .registerPermission(
+      {
+        icon: 'fas fa-pen',
+        label: app.translator.trans('flarum-user-tunes.admin.permission.editOwn'),
+        permission: 'flarum-user-tunes.editOwn',
+      },
+      'start'
+    )
+    .registerPermission(
+      {
+        icon: 'fas fa-pen',
+        label: app.translator.trans('flarum-user-tunes.admin.permission.editAny'),
+        permission: 'flarum-user-tunes.editAny',
+      },
+      'moderate'
+    );
 });

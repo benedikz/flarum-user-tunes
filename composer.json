@@ -24,12 +24,15 @@
     "extra": {
         "flarum-extension": {
             "title": "User Tunes",
-            "category": "",
+            "category": "feature",
             "icon": {
-                "name": "",
-                "color": "",
-                "backgroundColor": ""
-            }
+                "name": "fas fa-music",
+                "color": "#ffffff",
+                "backgroundColor": "#003300"
+            },
+            "optional-dependencies": [
+                "flarum/suspend"
+            ]
         },
         "flarum-cli": {
             "modules": {
