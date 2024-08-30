@@ -1,7 +1,6 @@
 import app from 'flarum/admin/app';
 
-app.initializers.add('flarum-user-tunes', () => {
-  /*
+app.initializers.add('benedikz/flarum-user-tunes', () => {
   app.extensionData
     .for('flarum-user-tunes')
     .registerPermission(
@@ -20,5 +19,4 @@ app.initializers.add('flarum-user-tunes', () => {
       },
       'moderate'
     );
-    */
 });
