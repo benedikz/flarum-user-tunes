@@ -16,9 +16,9 @@ use Flarum\User\User;
 use Benedikz\UserTunes\Access\UserPolicy;
 use Benedikz\UserTunes\Api\Serializer\UserSerializer;
 use Benedikz\UserTunes\Listener\SaveUserAnthem;
+use Flarum\Event\Serializing;
 
 return [
-    
     (new Flarum\Frontend('forum'))
         ->js(__DIR__.'/js/dist/forum.js'),
     //   ->css(__DIR__.'/less/forum.less'),
@@ -35,9 +35,9 @@ return [
     (new Flarum\ApiSerializer(UserSerializer::class))
         ->attributes(UserSerializer::class),
 
-    (new Flarum\Listener())
+    (new Flarum\Event())
         ->listen(Serializing::class, [SaveUserAnthem::class, 'addUserAnthem']),
 
-    (new Flarum\Migrator())
+    (new Flarum\Migration())
         ->add(__DIR__.'/migrations'),
 ];
