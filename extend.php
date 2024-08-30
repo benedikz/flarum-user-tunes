@@ -15,16 +15,17 @@ use Flarum\Extend as Flarum;
 use Flarum\User\User;
 
 return [
+    
     (new Flarum\Frontend('forum'))
-        ->js(__DIR__.'/js/dist/forum.js')
-        ->css(__DIR__.'/less/forum.less'),
+        ->js(__DIR__.'/js/dist/forum.js'),
+        //->css(__DIR__.'/less/forum.less'),
 
     (new Flarum\Frontend('admin'))
-        ->js(__DIR__.'/js/dist/admin.js')
-        ->css(__DIR__.'/less/admin.less'),
+        ->js(__DIR__.'/js/dist/admin.js'),
+       //->css(__DIR__.'/less/admin.less'),
 
     new Flarum\Locales(__DIR__.'/locale'),
     
-    (new Flarum\Policy())
-        ->modelPolicy(User::class, Access\UserPolicy::class),
+    //(new Flarum\Policy())
+    //    ->modelPolicy(User::class, Access\UserPolicy::class),
 ];
