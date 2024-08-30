@@ -27,7 +27,7 @@ export default class AnthemSettings extends Component<AnthemSettingsAttrs> {
           />
         </div>
         <Button className="Button Button--primary" onclick={this.saveAnthem.bind(this)}>
-          {app.translator.trans('flarum-user-tunes.forum.save_success')}
+          {app.translator.trans('flarum-user-tunes.forum.save_button')}
         </Button>
       </div>
     );
