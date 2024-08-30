@@ -17,6 +17,7 @@ use Benedikz\UserTunes\Access\UserPolicy;
 use Benedikz\UserTunes\Api\Serializer\UserSerializer;
 use Benedikz\UserTunes\Listener\SaveUserAnthem;
 use Flarum\Event\Serializing;
+use Flarum\User\Event\Saving;
 
 return [
     (new Flarum\Frontend('forum'))
@@ -36,7 +37,7 @@ return [
         ->attributes(UserSerializer::class),
 
     (new Flarum\Event())
-        ->listen(Serializing::class, [SaveUserAnthem::class, 'addUserAnthem']),
+        ->listen(Saving::class, Listener\SaveUserAnthem::class),
 
     (new Flarum\Model(User::class))
         ->cast('anthem_url', 'string'),

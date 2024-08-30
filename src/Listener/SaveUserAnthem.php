@@ -1,22 +1,34 @@
 <?php
 
-namespace Benedikz\UserTunes\Listener;
+namespace Benedikz\UserTunes\Listeners;
 
-use Flarum\Api\Event\Serializing;
-use Flarum\User\User;
-use Illuminate\Contracts\Events\Dispatcher;
+use Flarum\User\Event\Saving;
+use Illuminate\Support\Arr;
 
 class SaveUserAnthem
 {
-    public function subscribe(Dispatcher $events)
+    public function handle(Saving $event)
     {
-        $events->listen(Serializing::class, [$this, 'addUserAnthem']);
-    }
+        $user = $event->user;
+        $data = $event->data;
+        $actor = $event->actor;
 
-    public function addUserAnthem(Serializing $event)
-    {
-        if ($event->isSerializer(UserSerializer::class)) {
-            $event->attributes['anthemUrl'] = $event->model->anthem_url;
+        $attributes = Arr::get($data, 'attributes', []);
+
+        if (isset($attributes['anthemUrl'])) {
+            // Ensure the actor is allowed to edit the user's anthem
+            $actor->assertCan('editAnthem', $user);
+
+            // Trim and sanitize the anthemUrl
+            $anthemUrl = trim($attributes['anthemUrl']);
+
+            // Save the anthem URL to the user's profile
+            $user->anthem_url = $anthemUrl;
+
+            // Optionally, raise an event if the anthem URL is changed
+            if ($user->isDirty('anthem_url')) {
+                $user->raise(new \Benedikz\UserTunes\Event\AnthemChanged($user));
+            }
         }
     }
 }
