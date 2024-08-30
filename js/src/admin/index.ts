@@ -2,8 +2,7 @@ import app from 'flarum/admin/app';
 import { extend } from 'flarum/common/extend';
 import PermissionGrid from 'flarum/admin/components/PermissionGrid';
 
-app.initializers.add('benedikz/flarum-user-tunes', () => {
-  console.log('[benedikz/flarum-user-tunes] Hello, admin!');
+app.initializers.add('flarum-user-tunes', () => {
   extend(PermissionGrid.prototype, 'startItems', (items) => {
     items.add('setProfileAnthem', {
       icon: 'fas fa-music',

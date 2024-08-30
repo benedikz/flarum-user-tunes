@@ -4,7 +4,6 @@ namespace Benedikz\ProfileAnthems\Access;
 
 use Flarum\User\AbstractPolicy;
 use Flarum\User\User;
-use Flarum\Group\Group;
 
 class SetProfileAnthem extends AbstractPolicy
 {
@@ -12,12 +11,8 @@ class SetProfileAnthem extends AbstractPolicy
 
     public function setProfileAnthem(User $actor, User $user)
     {
-        if ($actor->hasPermission('setProfileAnthem') && $actor->id === $user->id) {
-            return $this->allow();
-        }
-
-        return $this->deny();
+        return $actor->hasPermission('setProfileAnthem') && $actor->id === $user->id
+            ? $this->allow()
+            : $this->deny();
     }
 }
-
-?>

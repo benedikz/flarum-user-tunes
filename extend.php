@@ -23,7 +23,11 @@ return [
         ->css(__DIR__.'/less/admin.less'),
 
     new Extend\Locales(__DIR__.'/locale'),
-
+    
     (new Extend\Policy())
-        ->modelPolicy(\Flarum\User\User::class, \Benedikz\ProfileAnthems\Access\SetProfileAnthem::class),
+        ->modelPolicy(\Flarum\User\User::class, SetProfileAnthem::class),
+
+    (new Extend\Permission())
+        ->permission('setProfileAnthem', 'custom-group-id')
+        ->registerPermission(),
 ];
