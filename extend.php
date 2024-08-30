@@ -27,6 +27,6 @@ return [
 
     new Flarum\Locales(__DIR__.'/locale'),
     
-    (new Flarum\Policy())
-        ->modelPolicy(User::class, Access\UserPolicy::class),
+    //(new Flarum\Policy())
+    //    ->modelPolicy(User::class, Access\UserPolicy::class),
 ];
