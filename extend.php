@@ -11,18 +11,19 @@
 
 namespace Benedikz\UserTunes;
 
-use Flarum\Extend;
+use Flarum\Extend as Flarum;
+use Flarum\User\User;
 
 return [
-    (new Extend\Frontend('forum'))
+    (new Flarum\Frontend('forum'))
         ->js(__DIR__.'/js/dist/forum.js')
         ->css(__DIR__.'/less/forum.less'),
 
-    (new Extend\Frontend('admin'))
+    (new Flarum\Frontend('admin'))
         ->js(__DIR__.'/js/dist/admin.js')
         ->css(__DIR__.'/less/admin.less'),
 
-    new Extend\Locales(__DIR__.'/locale'),
+    new Flarum\Locales(__DIR__.'/locale'),
     
     (new Flarum\Policy())
         ->modelPolicy(User::class, Access\UserPolicy::class),
