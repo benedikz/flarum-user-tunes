@@ -13,16 +13,17 @@ namespace Benedikz\UserTunes;
 
 use Flarum\Extend as Flarum;
 use Flarum\User\User;
+use Benedikz\UserTunes\Access\UserPolicy;
 
 return [
     
     (new Flarum\Frontend('forum'))
         ->js(__DIR__.'/js/dist/forum.js'),
-        //->css(__DIR__.'/less/forum.less'),
+    //   ->css(__DIR__.'/less/forum.less'),
 
     (new Flarum\Frontend('admin'))
         ->js(__DIR__.'/js/dist/admin.js'),
-       //->css(__DIR__.'/less/admin.less'),
+    //   ->css(__DIR__.'/less/admin.less'),
 
     new Flarum\Locales(__DIR__.'/locale'),
     
