@@ -13,7 +13,6 @@ namespace Benedikz\UserTunes;
 
 use Flarum\Extend as Flarum;
 use Flarum\User\User;
-use Benedikz\UserTunes\Access\UserPolicy;
 
 return [
     
