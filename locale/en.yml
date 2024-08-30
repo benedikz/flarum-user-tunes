@@ -3,5 +3,4 @@ flarum-user-tunes:
         permission:
             editOwn: Edit own anthem
             editAny: Edit any anthem
-
-  forum:
+    forum:
