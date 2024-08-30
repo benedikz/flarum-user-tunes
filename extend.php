@@ -26,8 +26,4 @@ return [
     
     (new Extend\Policy())
         ->modelPolicy(\Flarum\User\User::class, SetProfileAnthem::class),
-
-    (new Extend\Permission())
-        ->permission('setProfileAnthem', 'custom-group-id')
-        ->registerPermission(),
 ];
