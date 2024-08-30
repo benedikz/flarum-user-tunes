@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Benedikz\\UserTunes;
+//namespace Benedikz\\UserTunes;
 
 use Flarum\Extend;
 
@@ -23,7 +23,7 @@ return [
         ->css(__DIR__.'/less/admin.less'),
 
     new Extend\Locales(__DIR__.'/locale'),
-    
+
     (new Extend\Policy())
         ->modelPolicy(\Flarum\User\User::class, \Benedikz\ProfileAnthems\Access\SetProfileAnthem::class),
 ];
