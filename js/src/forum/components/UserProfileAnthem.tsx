@@ -8,23 +8,24 @@ interface UserProfileAnthemAttrs {
 }
 
 export default class UserProfileAnthem extends Component<UserProfileAnthemAttrs> {
-    view(vnode: Mithril.Vnode<UserProfileAnthemAttrs>) {
-        const { user } = vnode.attrs;
-        const anthemUrl = user?.attribute('anthemUrl') || '';
-        
-        // If the user has an anthemUrl set, render the audio player
-        if (anthemUrl) {
-            return (
-                <div className="UserProfileAnthem">
-                    <h4>{app.translator.trans('flarum-user-tunes.forum.anthem_heading')}</h4>
-                    <audio controls>
-                        <source src={anthemUrl} type="audio/ogg" />
-                        {app.translator.trans('flarum-user-tunes.forum.audio_not_supported')}
-                    </audio>
-                </div>
-            );
-        }
-
-        return null;
+  view(vnode: Mithril.Vnode<UserProfileAnthemAttrs>) {
+    const { user } = vnode.attrs;
+    const anthemUrl = user?.attribute('anthemUrl') || ''; // Fetch the anthem URL
+    
+    // Render the audio player only if an anthem URL is set
+    if (anthemUrl) {
+      return (
+        <div className="UserProfileAnthem">
+          <h4>{app.translator.trans('flarum-user-tunes.forum.anthem_heading')}</h4>
+          <audio controls>
+            <source src={anthemUrl} type="audio/ogg" />
+            {app.translator.trans('flarum-user-tunes.forum.audio_not_supported')}
+          </audio>
+        </div>
+      );
     }
+
+    // Return null if no anthem URL is set, so nothing is rendered
+    return null;
+  }
 }
