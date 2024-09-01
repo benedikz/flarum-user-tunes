@@ -6,6 +6,9 @@ import UserCard from 'flarum/forum/components/UserCard';
 import UserProfileAnthem from './components/UserProfileAnthem';
 
 app.initializers.add('benedikz/flarum-user-tunes', () => {
+  // Console log
+  console.log('[benedikz/flarum-user-tunes] Hello, forum and admin!');
+
   // Add the anthem settings to the user settings page
   extend(SettingsPage.prototype, 'settingsItems', function (items: any) {
     items.add('anthem', m(AnthemSettings as any), 100);

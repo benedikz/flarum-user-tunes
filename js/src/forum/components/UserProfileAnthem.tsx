@@ -30,6 +30,6 @@ export default class UserProfileAnthem extends Component<UserProfileAnthemAttrs>
     }
 
     // Return null if no anthem URL is set, so nothing is rendered
-    return null;
+    //return null;
   }
 }
