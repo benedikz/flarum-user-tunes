@@ -1,6 +1,6 @@
 <?php
 
-namespace Benedikz\UserTunes\Listeners;
+namespace Benedikz\UserTunes\Listener;
 
 use Flarum\User\Event\Saving;
 use Illuminate\Support\Arr;
