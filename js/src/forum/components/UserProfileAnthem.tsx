@@ -23,6 +23,10 @@ export default class UserProfileAnthem extends Component<UserProfileAnthemAttrs>
           </audio>
         </div>
       );
+    } else {
+      return (
+        <span>$ERR_NO_ANTHEM_SET.</span>
+      );
     }
 
     // Return null if no anthem URL is set, so nothing is rendered
