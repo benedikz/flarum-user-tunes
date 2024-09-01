@@ -21,12 +21,12 @@ use Flarum\User\Event\Saving;
 
 return [
     (new Flarum\Frontend('forum'))
-        ->js(__DIR__.'/js/dist/forum.js'),
-    //   ->css(__DIR__.'/less/forum.less'),
+        ->js(__DIR__.'/js/dist/forum.js')
+        ->css(__DIR__.'/js/less/forum.less'),
 
     (new Flarum\Frontend('admin'))
-        ->js(__DIR__.'/js/dist/admin.js'),
-    //   ->css(__DIR__.'/less/admin.less'),
+        ->js(__DIR__.'/js/dist/admin.js')
+        ->css(__DIR__.'/js/less/admin.less'),
 
     new Flarum\Locales(__DIR__.'/locale'),
     

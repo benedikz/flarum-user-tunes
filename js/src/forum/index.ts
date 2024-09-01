@@ -17,8 +17,7 @@ app.initializers.add('benedikz/flarum-user-tunes', () => {
     const anthemUrl = user?.attribute('anthemUrl'); // Fetch the anthem URL
 
     // Only add the anthem player if the user has an anthem URL set
-    if (anthemUrl) {
-      items.add('anthem', m(UserProfileAnthem, { user }), 100); // Lower priority to ensure it shows last
-    }
+    //if (anthemUrl) {
+    items.add('anthem', m(UserProfileAnthem, { user }), 1); // Lower priority to ensure it shows last
   });
 });
