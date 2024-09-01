@@ -18,6 +18,7 @@ use Benedikz\UserTunes\Api\Serializer\UserSerializer;
 use Benedikz\UserTunes\Listener\SaveUserAnthem;
 use Flarum\Event\Serializing;
 use Flarum\User\Event\Saving;
+use Psr\Log\LoggerInterface;
 
 return [
     (new Flarum\Frontend('forum'))
@@ -36,9 +37,15 @@ return [
     (new Flarum\ApiSerializer(UserSerializer::class))
         ->attributes(UserSerializer::class),
 
-    (new Flarum\Event())
-        ->listen(Saving::class, Listener\SaveUserAnthem::class),
+    //    (new Flarum\Event())
+    //      ->listen(Saving::class, Listener\SaveUserAnthem::class),
 
     (new Flarum\Model(User::class))
         ->cast('anthem_url', 'string'),
+
+    (new Flarum\Event())
+        ->listen(Saving::class, function (Saving $event, LoggerInterface $logger) {
+            $listener = new \Benedikz\UserTunes\Listener\SaveUserAnthem($logger);
+            $listener->handle($event);
+        }),
 ];
