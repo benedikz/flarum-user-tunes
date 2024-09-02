@@ -44,8 +44,8 @@ return [
         ->cast('anthem_url', 'string'),
 
     (new Flarum\Event())
-        ->listen(Saving::class, function (Saving $event, LoggerInterface $logger) {
-            $listener = new \Benedikz\UserTunes\Listener\SaveUserAnthem($logger);
+        ->listen(Saving::class, function (Saving $event) {
+            $listener = new \Benedikz\UserTunes\Listener\SaveUserAnthem(resolve(LoggerInterface::class));
             $listener->handle($event);
         }),
 ];

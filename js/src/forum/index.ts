@@ -18,6 +18,7 @@ app.initializers.add('benedikz/flarum-user-tunes', () => {
   extend(UserCard.prototype, 'infoItems', function (items: any) {
     const user = (this.attrs as any).user; // Get the user object
     const anthemUrl = user?.attribute('anthemUrl'); // Fetch the anthem URL
+    User.prototype.anthemUrl = Model.attribute('anthemUrl');
 
     // Only add the anthem player if the user has an anthem URL set
     //if (anthemUrl) {
